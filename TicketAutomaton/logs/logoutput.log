@@ -1,0 +1,79 @@
+20211106 14:08:21 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java33 - Message: New Document                          20                          0.02                          0.4                           transported via EMAIL
+20211113 09:46:26 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java33 - Message: New Document                          20                          0.02                          0.4                           transported via EMAIL
+20211113 10:46:21 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java34 - Message: PrintReport1 transported via EMAIL
+20211113 13:31:41 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java34 - Message: null transported via EMAIL
+20211113 14:30:25 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java35 - Message: null
+20
+0.02
+0.4
+ transported via SMS
+20211113 14:50:53 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java35 - Message: Name: null
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+ transported via SMS
+20211113 14:52:59 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java35 - Message: Name: new Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+ transported via SMS
+20211113 14:54:14 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java35 - Message: 
+Name: new Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+ transported via SMS
+20211113 14:55:25 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java35 - Message: 
+Name: new Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via SMS
+20211113 15:09:01 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java35 - Message: 
+Name: New Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via SMS
+20211127 19:22:05 INFO  [main] behaviour.MessagingSystemImpl MessagingSystemImpl.java43 - Message: 
+Name: New Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20211129 17:48:00 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: New Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20211130 12:13:00 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: New document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20211201 13:10:38 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: Ticket name
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20231202 15:36:01 INFO  [main] behaviour.MessagingSystem MessagingSystem.java44 - Message: 
+Name: Ticket name
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20231227 23:54:07 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: Ticket name
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20231228 11:26:52 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: Ticket name
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL

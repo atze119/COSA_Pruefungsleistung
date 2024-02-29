@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" activate="start" deactivate="stop" immediate="true" name="de.leuphana.cosa.componentservicebus.behaviour.ComponentServiceBus">
+   <property name="event.topics">documentsystem/Document
+messagingsystem/DeliveryReport
+printingsystem/PrintReport
+pricesystem/Price
+routesystem/Route
+ticketsystem/Ticket
+ticketsystem/TicketPurchaseInformation
+   </property>
+   <service>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+      <provide interface="de.leuphana.cosa.componentservicebus.behaviour.command.ComponentServiceBusCommandService"/>
+   </service>
+   <reference cardinality="1..1" field="documentCommandService" interface="de.leuphana.cosa.documentsystem.behaviour.service.command.DocumentSystemCommandService" name="documentCommandService"/>
+   <reference cardinality="1..1" field="messagingCommandService" interface="de.leuphana.cosa.messagingsystem.behaviour.service.command.MessagingSystemCommandService" name="messagingCommandService"/>
+   <reference cardinality="1..1" field="pricingCommandService" interface="de.leuphana.cosa.pricingsystem.behaviour.service.command.PricingSystemCommandService" name="pricingCommandService"/>
+   <reference cardinality="1..1" field="printingCommandService" interface="de.leuphana.cosa.printingsystem.behaviour.service.command.PrintingCommandService" name="printingCommandService"/>
+   <reference cardinality="1..1" field="routeCommandService" interface="de.leuphana.cosa.routesystem.behaviour.service.command.RouteSystemCommandService" name="routeCommandService"/>
+   <reference cardinality="1..1" field="ticketCommandService" interface="de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService" name="ticketCommandService"/>
+   <implementation class="de.leuphana.cosa.componentservicebus.behaviour.ComponentServiceBus"/>
+</scr:component>

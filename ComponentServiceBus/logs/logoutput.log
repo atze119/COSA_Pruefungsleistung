@@ -1,0 +1,24 @@
+20211129 17:47:29 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: Test Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20211130 12:11:27 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: New Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20211201 12:10:38 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: New Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
+20231227 23:53:57 INFO  [main] behaviour.MessagingSystem MessagingSystem.java43 - Message: 
+Name: New Document
+Number of pages: 20
+Price per pages: 0.02
+Total price: 0.4
+transported via EMAIL
