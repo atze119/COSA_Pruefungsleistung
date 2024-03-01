@@ -30,13 +30,13 @@ public class TicketAutomaton implements TicketAutomatonCommandService { // , Tic
 	private EventAdmin eventAdmin;
 
 	// OSGI event delegation
-		public void bindEventAdmin(EventAdmin eventAdmin) {
-			this.eventAdmin = eventAdmin;
-		}
-		
-		public void unbindEventAdmin(EventAdmin eventAdmin) {
-			this.eventAdmin = null;
-		}
+	public void bindEventAdmin(EventAdmin eventAdmin) {
+		this.eventAdmin = eventAdmin;
+	}
+	
+	public void unbindEventAdmin(EventAdmin eventAdmin) {
+		this.eventAdmin = null;
+	}
 		
 	@Activate
 	protected void start(BundleContext context) {
