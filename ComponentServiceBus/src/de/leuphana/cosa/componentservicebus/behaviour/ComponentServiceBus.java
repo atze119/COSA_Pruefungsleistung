@@ -8,7 +8,6 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 
-import de.leuphana.cosa.componentservicebus.behaviour.command.ComponentServiceBusCommandService;
 import de.leuphana.cosa.componentservicebus.structure.connector.DocumentToPrintableAdapter;
 import de.leuphana.cosa.componentservicebus.structure.connector.PrintReportToSendableAdapter;
 import de.leuphana.cosa.componentservicebus.structure.connector.TextToDocumentableAdapter;
@@ -39,7 +38,7 @@ import de.leuphana.cosa.ticketautomaton.structure.Ticket;
 import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 
 @Component (
-		immediate = true, service = {EventHandler.class, ComponentServiceBusCommandService.class},
+		immediate = true, service = {EventHandler.class},
 		property = {
 				EventConstants.EVENT_TOPIC + "=" + DocumentSystem.EVENT_TOPIC,
 				EventConstants.EVENT_TOPIC + "=" + MessagingSystem.EVENT_TOPIC,
@@ -49,15 +48,17 @@ import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 				EventConstants.EVENT_TOPIC + "=" + TicketAutomaton.EVENT_TOPIC_TICKET,
 				EventConstants.EVENT_TOPIC + "=" + TicketAutomaton.EVENT_TOPIC_TICKET_PURCHASE
 		})
-public class ComponentServiceBus implements EventHandler, ComponentServiceBusCommandService {
+public class ComponentServiceBus implements EventHandler {
+	// Not implementing BundleActivator because it breaks @Reference dependency-injection!
 	
 	private DocumentToPrintableAdapter documentToPrintableAdapter;
 	private PrintReportToSendableAdapter printReportToSendableAdapter;
 	private TextToDocumentableAdapter textToDocumentableAdapter;
-	public DeliveryReport deliveryReport;
 	
 	// TODO: This is real shit
+	public DeliveryReport deliveryReport; // I think it was only for testing
 	private Ticket ticketBackup;
+	private Price priceBackup;
 	private Route routeBackup;
 	
 	@Reference
@@ -77,7 +78,6 @@ public class ComponentServiceBus implements EventHandler, ComponentServiceBusCom
 	
 	@Reference
 	private TicketAutomatonCommandService ticketCommandService;
-	private Price priceBackup;
 	
 	public ComponentServiceBus() {
 		documentToPrintableAdapter = new DocumentToPrintableAdapter();
@@ -109,6 +109,8 @@ public class ComponentServiceBus implements EventHandler, ComponentServiceBusCom
 //		ComponentServiceBus.bundleContext = null;
 //	}
 //	
+	
+	// Instead of implementing BundleActivator, we use activator annotation
 	@Activate
 	protected void start() {
 		System.out.println("ComponentServiceBus activated!");
@@ -162,7 +164,7 @@ public class ComponentServiceBus implements EventHandler, ComponentServiceBusCom
 			Route route = (Route) event.getProperty(Route.class.getSimpleName());
 			System.out.println("Event is route: " + route);
 			
-			// TODO: Maybe remove the backups and place them into fields, should work now because they only get set if event is happening!
+			// TODO: Maybe remove the backups and place them into fields, should work now because they only get set if event is happening! or pass them through multiple events
 			routeBackup = route;
 			pricingCommandService.calculatePrice(route.getDistance(), PriceGroup.valueOf(ticketBackup.getName()));
 			break;
@@ -185,11 +187,4 @@ public class ComponentServiceBus implements EventHandler, ComponentServiceBusCom
 		
 	}
 	
-	// ------------------------------ Command ------------------------------------------------
-	
-	@Override
-	public void createDocument(String documentName, String documentContent) {
-		Documentable documentable = textToDocumentableAdapter.convert(documentName, documentContent);
-		documentCommandService.createDocument(documentable);
-	}
 }

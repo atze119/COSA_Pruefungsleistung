@@ -10,7 +10,6 @@ ticketsystem/TicketPurchaseInformation
    </property>
    <service>
       <provide interface="org.osgi.service.event.EventHandler"/>
-      <provide interface="de.leuphana.cosa.componentservicebus.behaviour.command.ComponentServiceBusCommandService"/>
    </service>
    <reference cardinality="1..1" field="documentCommandService" interface="de.leuphana.cosa.documentsystem.behaviour.service.command.DocumentSystemCommandService" name="documentCommandService"/>
    <reference cardinality="1..1" field="messagingCommandService" interface="de.leuphana.cosa.messagingsystem.behaviour.service.command.MessagingSystemCommandService" name="messagingCommandService"/>

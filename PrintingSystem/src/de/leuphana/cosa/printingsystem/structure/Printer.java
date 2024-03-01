@@ -15,22 +15,26 @@ public class Printer {
 		printJobQueue = new LinkedList<PrintJob>();
 	}
 
-	public void setColorType(ColorType colorType) {
-		this.colorType = colorType;
-	}
-
 	public void addPrintJob(PrintJob printJob) {
 		printJobQueue.add(printJob);
 		PrintJobState printJobState = printJob.getPrintJobState();
+		
 		printJob.setPrintJobState(printJobState.changePrintJobState(PrintAction.QUEUE));
 	}
 
 	public boolean print() {
 		PrintJob printJob = printJobQueue.remove();
 		PrintJobState printJobState = printJob.getPrintJobState();
+		
 		printJobState.changePrintJobState(PrintAction.PRINT);
-
 		return true;
 	}
 
+	public void setColorType(ColorType colorType) {
+		this.colorType = colorType;
+	}
+	
+	public ColorType getColorType() {
+		return this.colorType;
+	}
 }

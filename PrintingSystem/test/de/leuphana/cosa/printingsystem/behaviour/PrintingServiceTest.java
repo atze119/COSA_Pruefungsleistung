@@ -13,7 +13,6 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 
 import de.leuphana.cosa.printingsystem.behaviour.service.command.PrintingCommandService;
-import de.leuphana.cosa.printingsystem.structure.PrintOptions;
 import de.leuphana.cosa.printingsystem.structure.Printable;
 import de.leuphana.cosa.printingsystem.structure.UserAccount;
 
@@ -22,13 +21,11 @@ class PrintingServiceTest {
 
 	private Printable printable;
 	private static PrintingCommandService printingService;
-	private PrintOptions printOptions;
 	private UserAccount userAccount;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		//printingService = getService(PrintingCommandService.class);
-		printOptions = new PrintOptions();
 		userAccount = new UserAccount();
 		// anonyme innere Klassen
 		printable = new Printable() {
@@ -48,7 +45,6 @@ class PrintingServiceTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		//printingService = null;
-		printOptions = null;
 		userAccount = null;
 		printable = null;
 	}

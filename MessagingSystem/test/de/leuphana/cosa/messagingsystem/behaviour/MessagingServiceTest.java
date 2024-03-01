@@ -1,7 +1,5 @@
 package de.leuphana.cosa.messagingsystem.behaviour;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

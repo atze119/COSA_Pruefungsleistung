@@ -6,6 +6,22 @@ public class EmailReceiver implements Receiver {
 	private String address;
 	
 	public EmailReceiver(String receiverAddress) {
-		this.address = receiverAddress;
+		this.setAddress(receiverAddress);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

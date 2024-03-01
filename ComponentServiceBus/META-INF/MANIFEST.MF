@@ -8,7 +8,6 @@ Automatic-Module-Name: ComponentServiceBus.Automaton
 Bundle-ActivationPolicy: lazy
 Export-Package: de.leuphana.cosa.componentservicebus,
  de.leuphana.cosa.componentservicebus.behaviour,
- de.leuphana.cosa.componentservicebus.behaviour.command,
  de.leuphana.cosa.componentservicebus.structure.connector
 Import-Package: de.leuphana.cosa.documentsystem.behaviour,
  de.leuphana.cosa.documentsystem.behaviour.service.command,

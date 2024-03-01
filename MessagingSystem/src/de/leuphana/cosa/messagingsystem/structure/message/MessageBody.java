@@ -6,6 +6,14 @@ public class MessageBody {
 	private Content content;
 	
 	public MessageBody(Content content) {
+		this.setContent(content);
+	}
+
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
 		this.content = content;
 	}
 

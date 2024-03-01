@@ -8,7 +8,23 @@ public class MessageHeader {
 	private Receiver receiver;
 	
 	public MessageHeader(Sender sender, Receiver receiver) {
+		this.setReceiver(receiver);
+		this.setSender(sender);
+	}
+
+	public Receiver getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(Receiver receiver) {
 		this.receiver = receiver;
+	}
+
+	public Sender getSender() {
+		return sender;
+	}
+
+	public void setSender(Sender sender) {
 		this.sender = sender;
 	}
 }
