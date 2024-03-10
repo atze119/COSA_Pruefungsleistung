@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ComponentServiceBus_Automaton
-Bundle-SymbolicName: ComponentServiceBus;singleton:=true
+Bundle-SymbolicName: ComponentServiceBus
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: ComponentServiceBus.Automaton

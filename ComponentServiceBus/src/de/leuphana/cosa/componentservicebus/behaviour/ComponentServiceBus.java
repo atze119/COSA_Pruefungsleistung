@@ -1,5 +1,7 @@
 package de.leuphana.cosa.componentservicebus.behaviour;
 
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -48,7 +50,7 @@ import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 				EventConstants.EVENT_TOPIC + "=" + TicketAutomaton.EVENT_TOPIC_TICKET,
 				EventConstants.EVENT_TOPIC + "=" + TicketAutomaton.EVENT_TOPIC_TICKET_PURCHASE
 		})
-public class ComponentServiceBus implements EventHandler {
+public class ComponentServiceBus implements BundleActivator, EventHandler {
 	// Not implementing BundleActivator because it breaks @Reference dependency-injection!
 	
 	private DocumentToPrintableAdapter documentToPrintableAdapter;
@@ -111,13 +113,13 @@ public class ComponentServiceBus implements EventHandler {
 //	
 	
 	// Instead of implementing BundleActivator, we use activator annotation
-	@Activate
-	protected void start() {
+	@Override
+	public void start(BundleContext bundleContext) {
 		System.out.println("ComponentServiceBus activated!");
 	}
 	
-	@Deactivate
-	protected void stop() {
+	@Override
+	public void stop(BundleContext bundleContext) {
 		System.out.println("ComponentServiceBus deactivated!");
 	}
 	

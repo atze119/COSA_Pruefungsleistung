@@ -7,6 +7,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Scanner;
 
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -21,32 +22,33 @@ import de.leuphana.cosa.ticketautomaton.structure.Ticket;
 import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 
 // Deleted immediate = true, maybe add it again
-@Component(service = TicketAutomatonCommandService.class)
-public class TicketAutomaton implements TicketAutomatonCommandService { // , TicketAutomatonConfigurationService
+@Component(service = TicketAutomatonCommandService.class, property = {"osgi.command.scope=printCommandInterface", "osgi.command.function=printCommandInterface"})
+public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandService { // , TicketAutomatonConfigurationService
 	
 	public static final String EVENT_TOPIC_TICKET_PURCHASE = "ticketsystem/TicketPurchaseInformation";
 	public static final String EVENT_TOPIC_TICKET = "ticketsystem/Ticket";
 	
-	@Reference(bind = "bindEventAdmin", unbind = "unbindEventAdmin")
+	@Reference // bind = "bindEventAdmin", unbind = "unbindEventAdmin"
 	private EventAdmin eventAdmin;
 
 	// OSGI event delegation
-	public void bindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = eventAdmin;
-	}
-	
-	public void unbindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = null;
-	}
+//	public void bindEventAdmin(EventAdmin eventAdmin) {
+//		this.eventAdmin = eventAdmin;
+//	}
+//	
+//	public void unbindEventAdmin(EventAdmin eventAdmin) {
+//		this.eventAdmin = null;
+//	}
 		
-	@Activate
-	protected void start(BundleContext context) {
+	@Override
+	public void start(BundleContext context) {
 		System.out.println("TicketAutomaton activated!");
-
-		printCommandInterface();
+		// TODO: Change this to make it start with maybe "createTicket"
+		System.out.println("Start the process with enter the command: printCommandInterface");
+//		printCommandInterface();
 	}
 	
-	@Deactivate
+	@Override
 	public void stop(BundleContext context) {
 		System.out.println("TicketAutomaton deactivated!");		
 	}
@@ -81,7 +83,8 @@ public class TicketAutomaton implements TicketAutomatonCommandService { // , Tic
 		eventAdmin.sendEvent(event);
 	}
 	
-	private void printCommandInterface() {
+	@Override
+	public void printCommandInterface() {
 		Scanner scanner = new Scanner(System.in);
 		
 		LocationName startLocationName = chooseLocation(scanner, "start");
@@ -127,9 +130,9 @@ public class TicketAutomaton implements TicketAutomatonCommandService { // , Tic
 	
 	private LocationName chooseLocation(Scanner scanner, String choosePoint) {
 		if (choosePoint == "start") {
-			System.out.println("Please choose your startpoint: ");			
+			System.out.println("Please choose your start: ");			
 		} else if (choosePoint == "end") {
-			System.out.println("Please choose your endpoint: ");
+			System.out.println("Please choose your destination: ");
 		}
 	    System.out.println("1. Lunenburg");
 	    System.out.println("2. Hamburg");

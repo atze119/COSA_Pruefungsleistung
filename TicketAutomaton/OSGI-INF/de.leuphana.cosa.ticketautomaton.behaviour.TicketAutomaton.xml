@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" activate="start" deactivate="stop" name="de.leuphana.cosa.ticketautomaton.behaviour.TicketAutomaton">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="de.leuphana.cosa.ticketautomaton.behaviour.TicketAutomaton">
+   <property name="osgi.command.scope" value="printCommandInterface"/>
+   <property name="osgi.command.function" value="printCommandInterface"/>
    <service>
       <provide interface="de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService"/>
    </service>
-   <reference bind="bindEventAdmin" cardinality="1..1" field="eventAdmin" interface="org.osgi.service.event.EventAdmin" name="eventAdmin" unbind="unbindEventAdmin"/>
+   <reference cardinality="1..1" field="eventAdmin" interface="org.osgi.service.event.EventAdmin" name="eventAdmin"/>
    <implementation class="de.leuphana.cosa.ticketautomaton.behaviour.TicketAutomaton"/>
 </scr:component>
