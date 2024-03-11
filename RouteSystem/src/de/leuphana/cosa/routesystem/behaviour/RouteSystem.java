@@ -20,7 +20,7 @@ public class RouteSystem implements BundleActivator, RouteSystemCommandService {
 
 	public static final String EVENT_TOPIC = "routesystem/Route";
 	
-	@Reference(bind = "bindEventAdmin", unbind = "unbindEventAdmin")
+	@Reference
 	private EventAdmin eventAdmin;
 	
 	@Override
@@ -31,14 +31,6 @@ public class RouteSystem implements BundleActivator, RouteSystemCommandService {
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		System.out.println("RouteSystem deactivated!");
-	}
-	
-	public void bindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = eventAdmin;
-	}
-	
-	public void unbindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = null;
 	}
 
 	@Override

@@ -23,20 +23,11 @@ public class DocumentSystem implements BundleActivator, DocumentSystemCommandSer
 	
 	public static final String EVENT_TOPIC = "documentsystem/Document";
 	
-	@Reference(bind = "bindEventAdmin", unbind = "unbindEventAdmin")
+	@Reference
 	private EventAdmin eventAdmin;
 	
 	public DocumentSystem() {
 		documentMap = new HashMap<String, Document>();
-	}
-	
-	// OSGI event delegation
-	public void bindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = eventAdmin;
-	}
-	
-	public void unbindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = null;
 	}
 	
 	@Override

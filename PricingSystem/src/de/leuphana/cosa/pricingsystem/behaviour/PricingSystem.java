@@ -21,7 +21,7 @@ public class PricingSystem implements BundleActivator, PricingSystemCommandServi
 
 //	private static BundleContext context;
 	
-	@Reference(bind = "bindEventAdmin", unbind = "unbindEventAdmin")
+	@Reference
 	private EventAdmin eventAdmin;
 	
 	@Override
@@ -34,14 +34,6 @@ public class PricingSystem implements BundleActivator, PricingSystemCommandServi
 	public void stop(BundleContext context) throws Exception {
 //		PricingSystem.context = null;
 		System.out.println("PricingSystem is deactivated");
-	}
-	
-	public void bindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = eventAdmin;
-	}
-	
-	public void unbindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = null;
 	}
 
 	@Override

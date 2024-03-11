@@ -3,6 +3,6 @@
    <service>
       <provide interface="de.leuphana.cosa.documentsystem.behaviour.service.command.DocumentSystemCommandService"/>
    </service>
-   <reference bind="bindEventAdmin" cardinality="1..1" field="eventAdmin" interface="org.osgi.service.event.EventAdmin" name="eventAdmin" unbind="unbindEventAdmin"/>
+   <reference cardinality="1..1" field="eventAdmin" interface="org.osgi.service.event.EventAdmin" name="eventAdmin"/>
    <implementation class="de.leuphana.cosa.documentsystem.behaviour.DocumentSystem"/>
 </scr:component>

@@ -25,18 +25,8 @@ public class MessagingSystem implements BundleActivator, MessagingSystemCommandS
 	
 	public static final String EVENT_TOPIC = "messagingsystem/DeliveryReport";
 	
-	@Reference(bind = "bindEventAdmin", unbind = "unbindEventAdmin")
+	@Reference
 	private EventAdmin eventAdmin;
-	
-	// OSGI event-delegation
-	public void bindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = eventAdmin;
-	}
-	
-	public void unbindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = null;
-	}
-
 	
 	@Override
 	public void start(BundleContext arg0) throws Exception {

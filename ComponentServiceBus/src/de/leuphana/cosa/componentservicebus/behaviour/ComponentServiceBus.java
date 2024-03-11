@@ -2,9 +2,7 @@ package de.leuphana.cosa.componentservicebus.behaviour;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventConstants;
@@ -40,7 +38,7 @@ import de.leuphana.cosa.ticketautomaton.structure.Ticket;
 import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 
 @Component (
-		immediate = true, service = {EventHandler.class},
+		immediate = true, service = EventHandler.class,
 		property = {
 				EventConstants.EVENT_TOPIC + "=" + DocumentSystem.EVENT_TOPIC,
 				EventConstants.EVENT_TOPIC + "=" + MessagingSystem.EVENT_TOPIC,

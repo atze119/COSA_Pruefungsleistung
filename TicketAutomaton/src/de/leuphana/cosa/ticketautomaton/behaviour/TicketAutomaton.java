@@ -9,12 +9,11 @@ import java.util.Scanner;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
+
 import de.leuphana.cosa.pricingsystem.structure.PriceGroup;
 import de.leuphana.cosa.routesystem.structure.LocationName;
 import de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService;
@@ -28,18 +27,9 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 	public static final String EVENT_TOPIC_TICKET_PURCHASE = "ticketsystem/TicketPurchaseInformation";
 	public static final String EVENT_TOPIC_TICKET = "ticketsystem/Ticket";
 	
-	@Reference // bind = "bindEventAdmin", unbind = "unbindEventAdmin"
+	@Reference
 	private EventAdmin eventAdmin;
 
-	// OSGI event delegation
-//	public void bindEventAdmin(EventAdmin eventAdmin) {
-//		this.eventAdmin = eventAdmin;
-//	}
-//	
-//	public void unbindEventAdmin(EventAdmin eventAdmin) {
-//		this.eventAdmin = null;
-//	}
-		
 	@Override
 	public void start(BundleContext context) {
 		System.out.println("TicketAutomaton activated!");
@@ -101,9 +91,9 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 
 	private PriceGroup chooseTariff(Scanner scanner) {
 		System.out.println("Please choose one of the following pricegroups:");
-		System.out.println("1. Normal-Tariff");
-		System.out.println("2. Cheaper-Tariff");
-		System.out.println("3. Bargain-Tariff");
+		System.out.println("1. Normal-Tariff  (0% slower)");
+		System.out.println("2. Cheaper-Tariff (50% slower)");
+		System.out.println("3. Bargain-Tariff (100% slower)");
 		
 		PriceGroup tariff = null;
 		while (tariff == null) {			

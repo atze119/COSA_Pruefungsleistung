@@ -46,9 +46,9 @@ public class PrintingSystem implements BundleActivator, PrintingCommandService {
 	// Interface / was? = Realisierung // Wie?
 	private Set<Printer> printers;
 	
-	@Reference(bind = "bindEventAdmin", unbind = "unbindEventAdmin")
+	@Reference
 	private EventAdmin eventAdmin;
-	
+
 	//private printers;
 	
 	public PrintingSystem() {
@@ -58,22 +58,14 @@ public class PrintingSystem implements BundleActivator, PrintingCommandService {
 		printers.add(printer);
 	}
 	
-	public void bindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = eventAdmin;
-	}
-	
-	public void unbindEventAdmin(EventAdmin eventAdmin) {
-		this.eventAdmin = null;
-	}
-	
 	@Override
 	public void start(BundleContext context) throws Exception {
-		System.out.println("PrintingService aktivitert!");
+		System.out.println("PrintingService activated!");
 	}
 	
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("PrintingSystem deaktiviert!");
+		System.out.println("PrintingSystem deactivated!");
 	}
 
 	@Override
