@@ -6,7 +6,6 @@ printingsystem/PrintReport
 pricesystem/Price
 routesystem/Route
 ticketsystem/Ticket
-ticketsystem/TicketPurchaseInformation
    </property>
    <service>
       <provide interface="org.osgi.service.event.EventHandler"/>

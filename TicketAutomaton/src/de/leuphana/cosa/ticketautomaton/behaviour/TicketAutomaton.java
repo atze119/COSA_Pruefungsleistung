@@ -21,10 +21,9 @@ import de.leuphana.cosa.ticketautomaton.structure.Ticket;
 import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 
 // Deleted immediate = true, maybe add it again
-@Component(service = TicketAutomatonCommandService.class, property = {"osgi.command.scope=printCommandInterface", "osgi.command.function=printCommandInterface"})
+@Component(service = TicketAutomatonCommandService.class, property = {"osgi.command.scope=createTicket", "osgi.command.function=createTicket"})
 public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandService { // , TicketAutomatonConfigurationService
 	
-	public static final String EVENT_TOPIC_TICKET_PURCHASE = "ticketsystem/TicketPurchaseInformation";
 	public static final String EVENT_TOPIC_TICKET = "ticketsystem/Ticket";
 	
 	@Reference
@@ -33,9 +32,7 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 	@Override
 	public void start(BundleContext context) {
 		System.out.println("TicketAutomaton activated!");
-		// TODO: Change this to make it start with maybe "createTicket"
-		System.out.println("Start the process with enter the command: printCommandInterface");
-//		printCommandInterface();
+		System.out.println("Start the process with enter the command: createTicket");
 	}
 	
 	@Override
@@ -44,37 +41,20 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 	}
 	
 	@Override
-	public void createTicket(String priceGroup, String startLocation, String endLocation, double price, double distance) {
-		LocalDateTime localDate = LocalDateTime.now();
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		String date = localDate.format(dateFormatter);
-		String timeStamp = localDate.format(timeFormatter);
-
-		String ticketText = String.format(
-				"""
-				 -----------------------------------------------------------------------
-				|	Date: %s		Time: %s
-				|	Startlocation: %s		EndLocation: %s
-				|	Routedistance: %.2fKm
-				|	
-				|	Pricegroup: %s 	Price: %.2f€
-				 -----------------------------------------------------------------------
-				"""
-				, date, timeStamp, startLocation, endLocation, distance, priceGroup, price);
+	public Ticket createTicket() {
+		Ticket ticket = printCommandInterface();
 		
-		TicketPurchaseInformation ticketPurchaseInformation = new TicketPurchaseInformation(priceGroup, ticketText);
-		
-		Dictionary<String, TicketPurchaseInformation> eventProps = new Hashtable<String, TicketPurchaseInformation>();
-		eventProps.put(TicketPurchaseInformation.class.getSimpleName(), ticketPurchaseInformation);
-		Event event = new Event(EVENT_TOPIC_TICKET_PURCHASE, eventProps);
-		
+	
 		// TODO: maybe change this, did post and send -> made no difference
+		Dictionary<String, Ticket> eventProps = new Hashtable<String, Ticket>();
+		eventProps.put(Ticket.class.getSimpleName(), ticket);
+		Event event = new Event(EVENT_TOPIC_TICKET, eventProps);
 		eventAdmin.sendEvent(event);
+		
+		return ticket;
 	}
 	
-	@Override
-	public void printCommandInterface() {
+	private Ticket printCommandInterface() {
 		Scanner scanner = new Scanner(System.in);
 		
 		LocationName startLocationName = chooseLocation(scanner, "start");
@@ -83,10 +63,7 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 		
 		Ticket ticket = new Ticket(tariff.toString(), startLocationName.toString(), endLocationName.toString());
 		
-		Dictionary<String, Ticket> eventProps = new Hashtable<String, Ticket>();
-		eventProps.put(Ticket.class.getSimpleName(), ticket);
-		Event event = new Event(EVENT_TOPIC_TICKET, eventProps);
-		eventAdmin.postEvent(event);
+		return ticket;
 	}
 
 	private PriceGroup chooseTariff(Scanner scanner) {

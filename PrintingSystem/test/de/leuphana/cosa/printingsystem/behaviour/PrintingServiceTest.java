@@ -13,6 +13,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 
 import de.leuphana.cosa.printingsystem.behaviour.service.command.PrintingCommandService;
+import de.leuphana.cosa.printingsystem.structure.PrintReport;
 import de.leuphana.cosa.printingsystem.structure.Printable;
 import de.leuphana.cosa.printingsystem.structure.UserAccount;
 
@@ -59,7 +60,9 @@ class PrintingServiceTest {
 	@Test
 	@Order(2)
 	void canDocumentBePrintedTest() {
-		Assertions.assertNotNull(printingService.printDocument(printable, 0.0, userAccount));
+		PrintReport printReport = printingService.printDocument(printable, 0.0, userAccount); 
+		System.out.println("Printed document with name " + printReport.getName() + " and content " + printReport.getContent());
+		Assertions.assertNotNull(printReport);
 	}
 
 	// helper-function

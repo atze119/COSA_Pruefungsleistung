@@ -11,6 +11,7 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import de.leuphana.cosa.routesystem.behaviour.service.command.RouteSystemCommandService;
 import de.leuphana.cosa.routesystem.structure.LocationName;
+import de.leuphana.cosa.routesystem.structure.Route;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RouteSystemTest {
@@ -27,26 +28,28 @@ class RouteSystemTest {
 	@Test
 	@Order(2)
 	void canRouteBeCreated() {
-		Assertions.assertNotNull(routeService.createRoute(LocationName.HAMBURG, LocationName.LUNENBURG));
+		Route route = routeService.createRoute(LocationName.HAMBURG, LocationName.LUNENBURG);
+		System.out.println("Created route with start " + route.getStartLocation().toString() + " and destination " + route.getEndLocation().toString());
+		Assertions.assertNotNull(route);
 	}
 	
 	// helper-function to retrieve Service!
-		static <T> T getService(Class<T> clazz) {
-	        Bundle bundle = FrameworkUtil.getBundle(RouteSystem.class);
-	        if (bundle != null) {
-	            ServiceTracker<T, T> st =
-	                new ServiceTracker<T, T>(
-	                    bundle.getBundleContext(), clazz, null);
-	            st.open();
-	            if (st != null) {
-	                try {
-	                    // give the runtime some time to startup
-	                    return st.waitForService(500);
-	                } catch (InterruptedException e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        }
-	        return null;
-	    }
+	static <T> T getService(Class<T> clazz) {
+        Bundle bundle = FrameworkUtil.getBundle(RouteSystem.class);
+        if (bundle != null) {
+            ServiceTracker<T, T> st =
+                new ServiceTracker<T, T>(
+                    bundle.getBundleContext(), clazz, null);
+            st.open();
+            if (st != null) {
+                try {
+                    // give the runtime some time to startup
+                    return st.waitForService(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -60,7 +60,7 @@ public class PrintingSystem implements BundleActivator, PrintingCommandService {
 	
 	@Override
 	public void start(BundleContext context) throws Exception {
-		System.out.println("PrintingService activated!");
+		System.out.println("PrintingSystem activated!");
 	}
 	
 	@Override

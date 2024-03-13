@@ -1,6 +1,7 @@
 package de.leuphana.cosa.ticketautomaton.behaviour.service.command;
 
+import de.leuphana.cosa.ticketautomaton.structure.Ticket;
+
 public interface TicketAutomatonCommandService {
-	void createTicket(String priceGroup, String startLocation, String endLocation, double price, double distance);
-	void printCommandInterface();
+	Ticket createTicket();
 }

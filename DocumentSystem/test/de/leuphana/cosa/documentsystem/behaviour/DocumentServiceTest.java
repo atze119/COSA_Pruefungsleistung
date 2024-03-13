@@ -33,7 +33,7 @@ class DocumentServiceTest {
 
 			@Override
 			public String getContent() {
-				return "New content";
+				return "New Test Content";
 			}
 		};
 	}

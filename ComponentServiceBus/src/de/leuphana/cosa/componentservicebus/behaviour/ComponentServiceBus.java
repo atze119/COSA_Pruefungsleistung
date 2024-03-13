@@ -11,6 +11,7 @@ import org.osgi.service.event.EventHandler;
 import de.leuphana.cosa.componentservicebus.structure.connector.DocumentToPrintableAdapter;
 import de.leuphana.cosa.componentservicebus.structure.connector.PrintReportToSendableAdapter;
 import de.leuphana.cosa.componentservicebus.structure.connector.TextToDocumentableAdapter;
+import de.leuphana.cosa.componentservicebus.structure.connector.TicketInformationToTicketTemplateAdapter;
 import de.leuphana.cosa.documentsystem.behaviour.DocumentSystem;
 import de.leuphana.cosa.documentsystem.behaviour.service.command.DocumentSystemCommandService;
 import de.leuphana.cosa.documentsystem.structure.Document;
@@ -46,7 +47,6 @@ import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 				EventConstants.EVENT_TOPIC + "=" + PricingSystem.EVENT_TOPIC,
 				EventConstants.EVENT_TOPIC + "=" + RouteSystem.EVENT_TOPIC,
 				EventConstants.EVENT_TOPIC + "=" + TicketAutomaton.EVENT_TOPIC_TICKET,
-				EventConstants.EVENT_TOPIC + "=" + TicketAutomaton.EVENT_TOPIC_TICKET_PURCHASE
 		})
 public class ComponentServiceBus implements BundleActivator, EventHandler {
 	// Not implementing BundleActivator because it breaks @Reference dependency-injection!
@@ -54,9 +54,8 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 	private DocumentToPrintableAdapter documentToPrintableAdapter;
 	private PrintReportToSendableAdapter printReportToSendableAdapter;
 	private TextToDocumentableAdapter textToDocumentableAdapter;
+	private TicketInformationToTicketTemplateAdapter ticketInformationToTextAdapter;
 	
-	// TODO: This is real shit
-	public DeliveryReport deliveryReport; // I think it was only for testing
 	private Ticket ticketBackup;
 	private Price priceBackup;
 	private Route routeBackup;
@@ -83,6 +82,7 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 		documentToPrintableAdapter = new DocumentToPrintableAdapter();
 		printReportToSendableAdapter = new PrintReportToSendableAdapter();
 		textToDocumentableAdapter = new TextToDocumentableAdapter();
+		ticketInformationToTextAdapter = new TicketInformationToTicketTemplateAdapter();
 	}
 	
 //	@Override
@@ -110,7 +110,6 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 //	}
 //	
 	
-	// Instead of implementing BundleActivator, we use activator annotation
 	@Override
 	public void start(BundleContext bundleContext) {
 		System.out.println("ComponentServiceBus activated!");
@@ -124,7 +123,7 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 	// osgi-eventhandler
 	@Override
 	public void handleEvent(Event event) {
-		// TODO: Delete System.outs (was for debugging) and maybe switch-case
+		// TODO: Delete System.outs (was for debugging) maybe change them to logging
 		String topic = event.getTopic();
 		switch (topic) {
 		case DocumentSystem.EVENT_TOPIC:
@@ -134,23 +133,20 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 
 			printingCommandService.printDocument(printable, priceBackup.getAmount(), new UserAccount());
 			break;
-			
 		case MessagingSystem.EVENT_TOPIC:
 			DeliveryReport deliveryReport = (DeliveryReport) event.getProperty(DeliveryReport.class.getSimpleName());
 			System.out.println("Event is deliveryReport.type: " + deliveryReport.getMessageType() + " and delivery successful? " + deliveryReport.isDeliverySuccessful());
-			// TODO: could set public attribute here to test if its not null after creating document
-			this.deliveryReport = deliveryReport;
 			break;
-			
 		case PricingSystem.EVENT_TOPIC:
 			Price price = (Price) event.getProperty(Price.class.getSimpleName());
 			
 			priceBackup = price;
 			
 			System.out.println("Event is price and pricegroup is: " + price.getPriceGroup() + " price: " + price.getAmount() + "€");
-			ticketCommandService.createTicket(price.getPriceGroup().toString(), ticketBackup.getStartLocation(), ticketBackup.getEndLocation(), price.getAmount(), routeBackup.getDistance());
+			String ticketDocumentTemplate = ticketInformationToTextAdapter.convert(price, routeBackup);
+			Documentable documentable = textToDocumentableAdapter.convert(price.getPriceGroup().toString(), ticketDocumentTemplate);
+			documentCommandService.createDocument(documentable);
 			break;
-			
 		case PrintingSystem.EVENT_TOPIC:
 			PrintReport printReport = (PrintReport) event.getProperty(PrintReport.class.getSimpleName());
 			System.out.println("Event is printreport: " + printReport.getName());			
@@ -159,7 +155,6 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 			DeliveryReport delivery = messagingCommandService.sendMessage(sendable);
 			System.out.println("MessagecommandService worked, deliveryReport is: " + delivery + " " + delivery.getMessageType());
 			break;
-			
 		case RouteSystem.EVENT_TOPIC:
 			Route route = (Route) event.getProperty(Route.class.getSimpleName());
 			System.out.println("Event is route: " + route);
@@ -168,19 +163,12 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 			routeBackup = route;
 			pricingCommandService.calculatePrice(route.getDistance(), PriceGroup.valueOf(ticketBackup.getName()));
 			break;
-			
 		case TicketAutomaton.EVENT_TOPIC_TICKET:
 			Ticket ticket = (Ticket) event.getProperty(Ticket.class.getSimpleName());
 			System.out.println("Event is ticket and ticket priceGroup is: " + ticket.getName());
 			ticketBackup = ticket;
 			
 			routeCommandService.createRoute(LocationName.valueOf(ticket.getStartLocation()), LocationName.valueOf(ticket.getEndLocation()));
-			break;
-			
-		case TicketAutomaton.EVENT_TOPIC_TICKET_PURCHASE:
-			TicketPurchaseInformation ticketPurchaseInformation = (TicketPurchaseInformation) event.getProperty(TicketPurchaseInformation.class.getSimpleName());
-			Documentable documentable = textToDocumentableAdapter.convert(ticketPurchaseInformation.getName(), ticketPurchaseInformation.getContent());
-			documentCommandService.createDocument(documentable);
 			break;
 		default: System.out.println("Couldn't resolve the EVENT_TOPIC!!!");
 		}

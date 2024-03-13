@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.osgi.service.event.EventHandler;
 import org.osgi.util.tracker.ServiceTracker;
 
+import de.leuphana.cosa.componentservicebus.behaviour.ComponentServiceBus;
 import de.leuphana.cosa.documentsystem.behaviour.DocumentSystem;
 import de.leuphana.cosa.documentsystem.behaviour.service.command.DocumentSystemCommandService;
 import de.leuphana.cosa.messagingsystem.behaviour.MessagingSystem;
@@ -21,6 +23,8 @@ import de.leuphana.cosa.printingsystem.behaviour.PrintingSystem;
 import de.leuphana.cosa.printingsystem.behaviour.service.command.PrintingCommandService;
 import de.leuphana.cosa.routesystem.behaviour.RouteSystem;
 import de.leuphana.cosa.routesystem.behaviour.service.command.RouteSystemCommandService;
+import de.leuphana.cosa.ticketautomaton.behaviour.TicketAutomaton;
+import de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -41,8 +45,8 @@ public class ComponentServiceBusTest {
 	@Test
 	@Order(1)
 	void canComponentServiceBusBeAccessed() {
-//		ComponentServiceBusCommandService componentServiceBus = getService(ComponentServiceBusCommandService.class, ComponentServiceBus.class);
-//		Assertions.assertNotNull(componentServiceBus);
+		EventHandler componentServiceBus = getService(EventHandler.class, ComponentServiceBus.class);
+		Assertions.assertNotNull(componentServiceBus);
 	}
 	
 	@Test
@@ -80,8 +84,12 @@ public class ComponentServiceBusTest {
 		Assertions.assertNotNull(routeService);
 	}
 	
-	// TODO: TicketAutomaton doesnt work -> maybe componentServiceBus doesnt need any tests
-
+	@Test
+	@Order(7)
+	void canTicketServiceBeAccessed() {
+		TicketAutomatonCommandService ticketService = getService(TicketAutomatonCommandService.class, TicketAutomaton.class);
+		Assertions.assertNotNull(ticketService);
+	}
 
 	// TODO: Test the event-handling function of componentServiceBus
 	

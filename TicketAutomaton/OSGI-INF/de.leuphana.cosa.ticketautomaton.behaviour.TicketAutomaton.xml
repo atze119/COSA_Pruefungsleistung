@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="de.leuphana.cosa.ticketautomaton.behaviour.TicketAutomaton">
-   <property name="osgi.command.scope" value="printCommandInterface"/>
-   <property name="osgi.command.function" value="printCommandInterface"/>
+   <property name="osgi.command.scope" value="createTicket"/>
+   <property name="osgi.command.function" value="createTicket"/>
    <service>
       <provide interface="de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService"/>
    </service>

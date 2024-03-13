@@ -10,12 +10,14 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 
 import de.leuphana.cosa.pricingsystem.behaviour.service.command.PricingSystemCommandService;
+import de.leuphana.cosa.pricingsystem.structure.Price;
 import de.leuphana.cosa.pricingsystem.structure.PriceGroup;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PricingSystemTest {
 
 	private static PricingSystemCommandService pricingService;
+	private static double distance = 662.24;
 	
 	@Test
 	@Order(1)
@@ -27,7 +29,9 @@ class PricingSystemTest {
 	@Test
 	@Order(2)
 	void canPriceBeCalculated() {
-		Assertions.assertNotNull(pricingService.calculatePrice(662.24, PriceGroup.BARGAIN_TARIFF));
+		Price price = pricingService.calculatePrice(distance, PriceGroup.BARGAIN_TARIFF);
+		System.out.println("Calculated price " + price.getAmount() + " for pricegroup " + price.getPriceGroup() + " and distance " + distance);
+		Assertions.assertNotNull(price);
 	}
 
 	
