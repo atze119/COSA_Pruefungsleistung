@@ -1,0 +1,30 @@
+20240314 23:18:50 INFO  [main] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
+ -----------------------------------------------------------------------
+|	Date: 14.03.2024		Time: 23:18:49
+|	Startlocation: Lunenburg		EndLocation: Munich
+|	Routedistance: 574,43Km
+|
+|	Pricegroup: NORMAL_TARIFF 	Price: 17,23€
+ -----------------------------------------------------------------------
+ transported via EMAIL
+
+20240314 23:19:12 INFO  [main] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
+ -----------------------------------------------------------------------
+|	Date: 14.03.2024		Time: 23:19:12
+|	Startlocation: Lunenburg		EndLocation: Munich
+|	Routedistance: 574,43Km
+|
+|	Pricegroup: NORMAL_TARIFF 	Price: 17,23€
+ -----------------------------------------------------------------------
+ transported via EMAIL
+
+20240314 23:27:00 INFO  [main] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
+ -----------------------------------------------------------------------
+|	Date: 14.03.2024		Time: 23:27:00
+|	Startlocation: Lunenburg		EndLocation: Munich
+|	Routedistance: 574,43Km
+|
+|	Pricegroup: NORMAL_TARIFF 	Price: 17,23€
+ -----------------------------------------------------------------------
+ transported via EMAIL
+
