@@ -59,7 +59,6 @@ public class DocumentSystem implements BundleActivator, DocumentSystemCommandSer
 		Document document = new Document(documentable.getName());
 		document.setContent(documentable.getContent());
 		
-		// TODO: create logger
 		logger.debug(debugModeMarker, "Document created: " + documentable.getName());
 		
 		documentMap.put(documentable.getName(), document);

@@ -12,6 +12,9 @@ Service-Component: OSGI-INF/de.leuphana.cosa.pricingsystem.behaviour.PricingSyst
 Automatic-Module-Name: PricingSystem
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: de.leuphana.cosa.pricingsystem.behaviour.PricingSystem
+Bundle-ClassPath: lib/log4j-api-2.20.0.jar,
+ lib/log4j-core-2.20.0.jar,
+ .
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: de.leuphana.cosa.pricingsystem.behaviour,
  de.leuphana.cosa.pricingsystem.behaviour.service.command,

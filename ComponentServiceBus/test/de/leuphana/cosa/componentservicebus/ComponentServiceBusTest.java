@@ -1,5 +1,8 @@
 package de.leuphana.cosa.componentservicebus;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,21 +28,25 @@ import de.leuphana.cosa.routesystem.behaviour.RouteSystem;
 import de.leuphana.cosa.routesystem.behaviour.service.command.RouteSystemCommandService;
 import de.leuphana.cosa.ticketautomaton.behaviour.TicketAutomaton;
 import de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService;
+import de.leuphana.cosa.ticketautomaton.structure.Ticket;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ComponentServiceBusTest {
-
-	private static DocumentSystemCommandService documentService;
+	
+	private static TicketAutomatonCommandService ticketService;
+	
+	private static InputStream sysInBackup;
 	
 	@BeforeAll
 	public static void setup() {
-		
+		sysInBackup = System.in;
 	}
 	
 	@AfterAll
 	public static void tearDown() {
-		
+		System.setIn(sysInBackup);
+		ticketService = null;
 	}
 	
 	@Test
@@ -52,7 +59,7 @@ public class ComponentServiceBusTest {
 	@Test
 	@Order(2)
 	void canDocumentServiceBeAccessed() {
-		documentService = getService(DocumentSystemCommandService.class, DocumentSystem.class);
+		DocumentSystemCommandService documentService = getService(DocumentSystemCommandService.class, DocumentSystem.class);
 		Assertions.assertNotNull(documentService);
 	}
 	
@@ -87,12 +94,21 @@ public class ComponentServiceBusTest {
 	@Test
 	@Order(7)
 	void canTicketServiceBeAccessed() {
-		TicketAutomatonCommandService ticketService = getService(TicketAutomatonCommandService.class, TicketAutomaton.class);
+		ticketService = getService(TicketAutomatonCommandService.class, TicketAutomaton.class);
 		Assertions.assertNotNull(ticketService);
 	}
-
-	// TODO: Test the event-handling function of componentServiceBus
 	
+	@Test
+	@Order(8)
+	void canTicketBeCreated() {
+		String userInput = "1 3 1";
+		ByteArrayInputStream in = new ByteArrayInputStream(userInput.getBytes());
+		System.setIn(in);
+		
+		Ticket ticket = ticketService.createTicket();
+		Assertions.assertNotNull(ticket);
+	}
+
 	// helper-function
 		static <T, Y> T getService(Class<T> clazz, Class<Y> bundleClass) {
 	        Bundle bundle = FrameworkUtil.getBundle(bundleClass);

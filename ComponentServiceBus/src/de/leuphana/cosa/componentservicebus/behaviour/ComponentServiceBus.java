@@ -161,7 +161,7 @@ public class ComponentServiceBus implements BundleActivator, EventHandler {
 				Routable routable = ticketInformationToRoutableAdapter.convert(ticket.getStartLocation(), ticket.getEndLocation());
 				routeCommandService.createRoute(routable);
 				break;
-			default: System.out.println("Couldn't resolve the EVENT_TOPIC: " + topic);
+			default: logger.error("Couldn't resolve the EVENT_TOPIC: " + topic);
 		}
 		
 	}

@@ -1,198 +1,117 @@
-
-20240119 13:12:35 INFO  [EventAdmin Async Event Dispatcher Thread] command.MessagingSystem MessagingSystem.java69 - Message: 
+20240314 22:57:49 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:12:35
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 22:57:49
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:13:03 INFO  [EventAdmin Async Event Dispatcher Thread] command.MessagingSystem MessagingSystem.java69 - Message: 
+20240314 22:59:23 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:13:03
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 22:59:23
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:13:36 INFO  [EventAdmin Async Event Dispatcher Thread] command.MessagingSystem MessagingSystem.java69 - Message: 
+20240314 23:00:04 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:13:36
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 23:00:03
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:13:46 INFO  [EventAdmin Async Event Dispatcher Thread] command.MessagingSystem MessagingSystem.java69 - Message: 
+20240314 23:02:36 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:13:46
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 23:02:35
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:21:10 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java70 - Message: 
+20240314 23:02:47 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:21:10
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 23:02:47
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:27:58 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
+20240314 23:10:08 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:27:58
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 23:10:07
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:31:56 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
+20240314 23:10:48 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:31:56
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 23:10:48
+|	Startlocation: Lunenburg		EndLocation: Hamburg
+|	Routedistance: 43,75Km
+|
+|	Pricegroup: BARGAIN_TARIFF 	Price: 0,00€
+ -----------------------------------------------------------------------
+ transported via EMAIL
+
+20240314 23:13:52 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
+ -----------------------------------------------------------------------
+|	Date: 14.03.2024		Time: 23:13:52
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:32:31 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
+20240314 23:14:03 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:32:30
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
+|	Date: 14.03.2024		Time: 23:14:03
+|	Startlocation: Lunenburg		EndLocation: Kiel
+|	Routedistance: 120,45Km
 |
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
+|	Pricegroup: NORMAL_TARIFF 	Price: 3,61€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:34:38 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
+20240314 23:17:39 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:34:38
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
+|	Date: 14.03.2024		Time: 23:17:39
+|	Startlocation: Lunenburg		EndLocation: Dusseldorf
+|	Routedistance: 334,79Km
 |
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
+|	Pricegroup: NORMAL_TARIFF 	Price: 10,04€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:46:48 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
+20240314 23:17:59 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:46:48
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
+|	Date: 14.03.2024		Time: 23:17:59
+|	Startlocation: Lunenburg		EndLocation: Dusseldorf
+|	Routedistance: 334,79Km
 |
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
+|	Pricegroup: CHEAPER_TARIFF 	Price: 0,08€
  -----------------------------------------------------------------------
  transported via EMAIL
 
-20240119 13:48:06 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
+20240314 23:26:12 INFO  [pipe-createTicket] behaviour.MessagingSystem MessagingSystem.java55 - Message: 
  -----------------------------------------------------------------------
-|	Date: 19.01.2024		Time: 13:48:06
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:14:47 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:14:46
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:19:24 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:19:24
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:19:49 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:19:49
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:21:40 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:21:39
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:23:04 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:23:04
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:24:34 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:24:33
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:27:01 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:27:01
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:27:09 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:27:09
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
-|	Routedistance: 43,75Km
-|
-|	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€
- -----------------------------------------------------------------------
- transported via EMAIL
-
-20240229 12:27:42 INFO  [EventAdmin Async Event Dispatcher Thread] behaviour.MessagingSystem MessagingSystem.java67 - Message: 
- -----------------------------------------------------------------------
-|	Date: 29.02.2024		Time: 12:27:42
-|	Startlocation: LUNENBURG		EndLocation: HAMBURG
+|	Date: 14.03.2024		Time: 23:26:12
+|	Startlocation: Lunenburg		EndLocation: Hamburg
 |	Routedistance: 43,75Km
 |
 |	Pricegroup: BARGAIN_TARIFF 	Price: 0,01€

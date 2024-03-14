@@ -32,11 +32,11 @@ class PrintingServiceTest {
 		printable = new Printable() {
 
 			public String getTitle() {
-				return "new document name";
+				return "New test document name";
 			}
 
 			public String getContent() {
-				return "new content";
+				return "New test content";
 			}
 		};
 

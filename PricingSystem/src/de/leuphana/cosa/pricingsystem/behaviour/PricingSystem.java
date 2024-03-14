@@ -3,6 +3,8 @@ package de.leuphana.cosa.pricingsystem.behaviour;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Component;
@@ -18,6 +20,8 @@ import de.leuphana.cosa.pricingsystem.structure.Price;
 public class PricingSystem implements BundleActivator, PricingSystemCommandService {
 	
 	public static final String EVENT_TOPIC = "pricesystem/Price";
+	
+	private static final Logger LOGGER = LogManager.getLogger(PricingSystem.class);
 
 	@Reference
 	private EventAdmin eventAdmin;
@@ -46,7 +50,7 @@ public class PricingSystem implements BundleActivator, PricingSystemCommandServi
 		case BARGAIN_TARIFF:
 			price.setAmount((chargeable.getRouteDistance() * 0.03f) / 100 * 0.5f);
 			break;
-		default: System.out.println("Unable to resolve pricegroup!");
+		default: LOGGER.error("Unable to resolve pricegroup: " + chargeable.getPriceGroup());
 		}
 		
 		// Eventing
