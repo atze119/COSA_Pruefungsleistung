@@ -24,6 +24,7 @@ import de.leuphana.cosa.printingsystem.structure.UserAccount;
 public class PrintingSystem implements BundleActivator, PrintingCommandService {
 	
 	public static final String EVENT_TOPIC = "printingsystem/PrintReport";
+	
 	// Interface  Was?
 	//Collection - 
 	// Wie ?
@@ -56,6 +57,7 @@ public class PrintingSystem implements BundleActivator, PrintingCommandService {
 		Printer printer = new Printer();
 		printer.setColorType(ColorType.BLACK_WHITE);
 		printers.add(printer);
+		
 	}
 	
 	@Override
@@ -94,7 +96,9 @@ public class PrintingSystem implements BundleActivator, PrintingCommandService {
 		}
 		
 		// TODO: Printing the ticket happens now here, not sure if its right!
+		System.out.println("Printing document......");
 		System.out.println(printable.getContent());
+		System.out.println("Finished printing process!");
 		
 		Dictionary<String, PrintReport> eventProps = new Hashtable<String, PrintReport>();
 		eventProps.put(PrintReport.class.getSimpleName(), printReport);

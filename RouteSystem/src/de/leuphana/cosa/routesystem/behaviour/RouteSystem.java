@@ -13,6 +13,7 @@ import org.osgi.service.event.EventAdmin;
 import de.leuphana.cosa.routesystem.behaviour.service.command.RouteSystemCommandService;
 import de.leuphana.cosa.routesystem.structure.Location;
 import de.leuphana.cosa.routesystem.structure.LocationName;
+import de.leuphana.cosa.routesystem.structure.Routable;
 import de.leuphana.cosa.routesystem.structure.Route;
 
 @Component(service = RouteSystemCommandService.class)
@@ -34,9 +35,9 @@ public class RouteSystem implements BundleActivator, RouteSystemCommandService {
 	}
 
 	@Override
-	public Route createRoute(LocationName startLocation, LocationName endLocation) {
-		Location startLocation1 = pickLocation(startLocation);
-		Location endLocation1 = pickLocation(endLocation);
+	public Route createRoute(Routable routable) {
+		Location startLocation1 = pickLocation(routable.getStartLocation());
+		Location endLocation1 = pickLocation(routable.getEndLocation());
 		Route route = new Route(startLocation1, endLocation1);
 		
 		// Eventing
@@ -54,19 +55,19 @@ public class RouteSystem implements BundleActivator, RouteSystemCommandService {
 	    while(location == null) {
 			switch (locationName) {
 				case LUNENBURG:
-					location = new Location("Lüneburg", 53.250900, 10.414090);
+					location = new Location("Lunenburg", 53.250900, 10.414090);
 					break;
 				case HAMBURG:
 					location = new Location("Hamburg", 53.553406, 9.992196);
 					break;
 				case MUNICH: 
-					location = new Location("München", 48.137428, 11.575490);
+					location = new Location("Munich", 48.137428, 11.575490);
 					break;
 				case BREMEN:
 					location = new Location("Bremen", 53.075160, 8.807770);
 					break;
 				case DUSSELDORF:
-					location = new Location("Düsseldorf", 51.224941, 6.775652);
+					location = new Location("Dusseldorf", 51.224941, 6.775652);
 					break;
 				case KIEL:
 					location = new Location("Kiel", 54.321675, 10.137186);

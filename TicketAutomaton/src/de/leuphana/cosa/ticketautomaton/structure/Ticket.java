@@ -1,19 +1,23 @@
 package de.leuphana.cosa.ticketautomaton.structure;
 
 public class Ticket {
-	// Name == PriceGroup
-	private String name;
+	
+	private String priceGroup;
 	private String startLocation;
 	private String endLocation;
 
 	public Ticket(String name, String startLocation, String endLocation) {
-		this.name = name;
+		this.priceGroup = name;
 		this.startLocation = startLocation;
 		this.endLocation = endLocation;
 	}
 	
-	public String getName() {
-		return name;
+	public String getPriceGroup() {
+		return priceGroup;
+	}
+	
+	public void setPriceGroup(String priceGroup) {
+		this.priceGroup = priceGroup;
 	}
 
 	public String getStartLocation() {

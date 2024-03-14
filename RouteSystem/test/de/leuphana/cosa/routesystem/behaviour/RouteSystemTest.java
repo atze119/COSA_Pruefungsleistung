@@ -1,6 +1,8 @@
 package de.leuphana.cosa.routesystem.behaviour;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -11,12 +13,36 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import de.leuphana.cosa.routesystem.behaviour.service.command.RouteSystemCommandService;
 import de.leuphana.cosa.routesystem.structure.LocationName;
+import de.leuphana.cosa.routesystem.structure.Routable;
 import de.leuphana.cosa.routesystem.structure.Route;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RouteSystemTest {
 	
 	private static RouteSystemCommandService routeService;
+	private static Routable routable;
+	
+	@BeforeAll
+	static void setup() {
+		routable = new Routable() {
+			
+			@Override
+			public LocationName getStartLocation() {
+				return LocationName.HAMBURG;
+			}
+			
+			@Override
+			public LocationName getEndLocation() {
+				return LocationName.LUNENBURG;
+			}
+		};
+	}
+	
+	@AfterAll
+	static void tearDown() {
+		routable = null;
+		routeService = null;
+	}
 	
 	@Test
 	@Order(1)
@@ -28,8 +54,8 @@ class RouteSystemTest {
 	@Test
 	@Order(2)
 	void canRouteBeCreated() {
-		Route route = routeService.createRoute(LocationName.HAMBURG, LocationName.LUNENBURG);
-		System.out.println("Created route with start " + route.getStartLocation().toString() + " and destination " + route.getEndLocation().toString());
+		Route route = routeService.createRoute(routable);
+		System.out.println("Created route with start " + route.getStartLocation().getName() + " and destination " + route.getEndLocation().getName());
 		Assertions.assertNotNull(route);
 	}
 	

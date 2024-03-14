@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Component;
@@ -23,11 +27,19 @@ public class DocumentSystem implements BundleActivator, DocumentSystemCommandSer
 	
 	public static final String EVENT_TOPIC = "documentsystem/Document";
 	
+	private Logger logger;
+	private Marker debugModeMarker;
+	
 	@Reference
 	private EventAdmin eventAdmin;
 	
 	public DocumentSystem() {
 		documentMap = new HashMap<String, Document>();
+		logger = LogManager.getLogger(this.getClass());
+		boolean isDebugMode = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().indexOf("jdwp") >= 0;
+		if (isDebugMode) {
+			debugModeMarker = MarkerManager.getMarker("DEBUG_MODE");
+		}	
 	}
 	
 	@Override
@@ -47,7 +59,8 @@ public class DocumentSystem implements BundleActivator, DocumentSystemCommandSer
 		Document document = new Document(documentable.getName());
 		document.setContent(documentable.getContent());
 		
-		System.out.println("Document created: " + documentable.getName());
+		// TODO: create logger
+		logger.debug(debugModeMarker, "Document created: " + documentable.getName());
 		
 		documentMap.put(documentable.getName(), document);
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration strict="true"
+	xmlns="http://logging.apache.org/log4j/2.0/config"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config 
+              https://raw.githubusercontent.com/apache/logging-log4j2/master/log4j-core/src/main/resources/Log4j-config.xsd">
+	<Appenders>
+	   <Appender type="Console" name="STDOUT">
+	      <Layout type="PatternLayout" pattern="%d %-5p %F:%L - %m%n" />
+	   </Appender>
+
+									<!-- Watch for the working-directory in Run-Configuration!!! -->
+	   <Appender type="File" name="FILE" fileName="ComponentServiceBus\logs\logoutput.log">
+	      <Layout type="PatternLayout">
+			<Pattern>%d{yyyyMMdd HH:mm:ss} %-5p [%t] %C{2} %F%L - %m%n</Pattern>
+	      </Layout>
+	   </Appender>
+	</Appenders>
+	
+
+	<Loggers>
+	   <Root level="info">
+	   		<AppenderRef ref="STDOUT"/>
+	   </Root>
+	   <Logger name="de.leuphana.cosa.componentservicebus.behaviour" level="debug" additivity="false">
+	   		<AppenderRef ref="STDOUT"> 
+	   			<MarkerFilter marker="DEBUG_MODE" onMatch="ACCEPT" onMismatch="DENY"/>
+	   		</AppenderRef>
+	   </Logger>
+	</Loggers>
+</Configuration>

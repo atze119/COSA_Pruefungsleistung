@@ -7,6 +7,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: PrintingSystem.Automaton
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: de.leuphana.cosa.printingsystem.behaviour.PrintingSystem
+Bundle-ClassPath: lib/log4j-api-2.20.0.jar,
+ lib/log4j-core-2.20.0.jar,
+ .
 Export-Package: de.leuphana.cosa.printingsystem.behaviour,
  de.leuphana.cosa.printingsystem.behaviour.service.command;uses:="de.leuphana.cosa.printingsystem.structure",
  de.leuphana.cosa.printingsystem.structure;uses:="de.leuphana.cosa.printingsystem.structure.printjobstate",

@@ -1,8 +1,6 @@
 package de.leuphana.cosa.ticketautomaton.behaviour;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -18,11 +16,9 @@ import de.leuphana.cosa.pricingsystem.structure.PriceGroup;
 import de.leuphana.cosa.routesystem.structure.LocationName;
 import de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService;
 import de.leuphana.cosa.ticketautomaton.structure.Ticket;
-import de.leuphana.cosa.ticketautomaton.structure.TicketPurchaseInformation;
 
-// Deleted immediate = true, maybe add it again
 @Component(service = TicketAutomatonCommandService.class, property = {"osgi.command.scope=createTicket", "osgi.command.function=createTicket"})
-public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandService { // , TicketAutomatonConfigurationService
+public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandService {
 	
 	public static final String EVENT_TOPIC_TICKET = "ticketsystem/Ticket";
 	
@@ -43,14 +39,10 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 	@Override
 	public Ticket createTicket() {
 		Ticket ticket = printCommandInterface();
-		
-	
-		// TODO: maybe change this, did post and send -> made no difference
 		Dictionary<String, Ticket> eventProps = new Hashtable<String, Ticket>();
 		eventProps.put(Ticket.class.getSimpleName(), ticket);
 		Event event = new Event(EVENT_TOPIC_TICKET, eventProps);
 		eventAdmin.sendEvent(event);
-		
 		return ticket;
 	}
 	
@@ -62,7 +54,6 @@ public class TicketAutomaton implements BundleActivator, TicketAutomatonCommandS
 		PriceGroup tariff = chooseTariff(scanner);
 		
 		Ticket ticket = new Ticket(tariff.toString(), startLocationName.toString(), endLocationName.toString());
-		
 		return ticket;
 	}
 

@@ -6,7 +6,7 @@ public class QueuedPrintJobState extends PrintJobState {
 	
 	public QueuedPrintJobState(PrintJob printJob) {
 		super(printJob);
-		System.out.println("Print job with document name " + printJob.getPrintablet().getTitle() + " queued!");
+		LOGGER.debug(DEBUG_MODE_MARKER, "Print job with document name " + printJob.getPrintablet().getTitle() + " queued!");
 	}
 
 	@Override

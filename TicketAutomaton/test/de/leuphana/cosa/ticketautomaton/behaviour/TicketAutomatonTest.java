@@ -1,5 +1,8 @@
 package de.leuphana.cosa.ticketautomaton.behaviour;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,36 +14,24 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 
-import de.leuphana.cosa.pricingsystem.structure.PriceGroup;
-import de.leuphana.cosa.routesystem.structure.LocationName;
 import de.leuphana.cosa.ticketautomaton.behaviour.service.command.TicketAutomatonCommandService;
 import de.leuphana.cosa.ticketautomaton.structure.Ticket;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TicketAutomatonTest {
 	private static TicketAutomatonCommandService ticketService;
-	private static PriceGroup priceGroup;
-	private static LocationName startLocation;
-	private static LocationName endLocation;
-	private static double price;
-	private static double distance;
+	
+	private static InputStream sysInBackup;
 	
 	@BeforeAll
 	public static void setup() {
-		priceGroup = PriceGroup.BARGAIN_TARIFF;
-		startLocation = LocationName.BREMEN;
-		endLocation = LocationName.DUSSELDORF;
-		price = 20.50;
-		distance = 300.0;
+		sysInBackup = System.in;
 	}
 	
 	@AfterAll
 	public static void tearDown() {
-		priceGroup = null;
-		startLocation = null;
-		endLocation = null;
-		price = 0.0;
-		distance = 0.0;
+		ticketService = null;
+		System.setIn(sysInBackup);
 	}
 	
 	@Test
@@ -52,9 +43,12 @@ class TicketAutomatonTest {
 
 	@Test
 	void canTicketBeCreated() {
-		// TODO: implement this
-//		Ticket ticket = ticketService.createTicket(priceGroup.toString(), startLocation.toString(), endLocation.toString(), price, distance);
-		//Assert.assertNotNull(ticketAutomaton.createTicket("Ticket name", "Lüneburg", "Hamburg"));
+		String userInput = "1 3 1";
+		ByteArrayInputStream in = new ByteArrayInputStream(userInput.getBytes());
+		System.setIn(in);
+		
+		Ticket ticket = ticketService.createTicket();
+		Assertions.assertNotNull(ticket);
 	}
 	
 	// helper-function to retrieve service!

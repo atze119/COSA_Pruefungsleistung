@@ -6,7 +6,7 @@ public class PrintedPrintJobState extends PrintJobState {
 	
 	public PrintedPrintJobState(PrintJob printJob) {
 		super(printJob);
-		System.out.println("Print job with document name " + printJob.getPrintablet().getTitle() + " printed!");
+		LOGGER.debug(DEBUG_MODE_MARKER, "Print job with document name " + printJob.getPrintablet().getTitle() + " printed!");
 	}
 
 	@Override

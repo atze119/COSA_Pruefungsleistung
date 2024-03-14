@@ -29,14 +29,12 @@ public class MessagingSystem implements BundleActivator, MessagingSystemCommandS
 	private EventAdmin eventAdmin;
 	
 	@Override
-	public void start(BundleContext arg0) throws Exception {
-		// TODO Auto-generated method stub
+	public void start(BundleContext context) throws Exception {
 		System.out.println("MessagingSystem activated");
 	}
 	
 	@Override
-	public void stop(BundleContext arg0) throws Exception {
-		// TODO Auto-generated method stub
+	public void stop(BundleContext context) throws Exception {
 		System.out.println("MessagingSystem deactivated");
 		
 	}
